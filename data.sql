@@ -78,7 +78,7 @@ INSERT INTO animals(
     '2020-02-08',
     0,
     FALSE,
-    11
+    -11
 );
 
 INSERT INTO animals(
@@ -94,7 +94,7 @@ INSERT INTO animals(
     '2022-11-15',
     2,
     true,
-    5.7
+    -5.7
 );
 
 INSERT INTO animals(
@@ -110,7 +110,7 @@ INSERT INTO animals(
     '1993-04-02',
     3,
     FALSE,
-    12.13
+    -12.13
 );
 
 INSERT INTO animals(
@@ -126,7 +126,7 @@ INSERT INTO animals(
     '2005-06-12',
     1,
     TRUE,
-    45
+    -45.0
 );
 
 INSERT INTO animals(
@@ -160,53 +160,3 @@ INSERT INTO animals(
     TRUE,
     17
 );
-
-/* Start a transaction and update the animals 
-   table by setting the species column to unspecified.
-*/
-BEGIN TRANSACTION;
-
-UPDATE animals SET species = 'unspecified';
-
---verify the changes were made
-SELECT * FROM animals;
-
---rollback changes made to species
-ROLLBACK TRANSACTION;
-
-/* Start a transaction and update the animals 
-   table by setting species column
-*/
-BEGIN TRANSACTION;
-
-UPDATE animals SET species = 'digimon' WHERE name LIKE '%mon';
-
-UPDATE animals SET species = 'pokemon' WHERE species IS NULL;
-
-COMMIT TRANSACTION;
-
-SELECT name, species FROM animals;
-
-/* Start a transaction and delete 
-   all records in the animals table
-*/
-BEGIN TRANSACTION;
-
-DELETE FROM animals;
-
-ROLLBACK TRANSACTION;
-
--- start and run multiple transactions on the animals table
-BEGIN TRANSACTION;
-
-DELETE FROM animals WHERE date_of_birth > 'Jan 1, 2022';
-
-SAVE TRANSACTION first_deleted_transaction;
-
-UPDATE animals SET weight_kg = weight_kg * -1;
-
-ROLLBACK TRANSACTION first_deleted_transaction;
-
-UPDATE animals SET weight_kg = weight_kg * -1 WHERE weight_kg < 0;
-
-COMMIT TRANSACTION;

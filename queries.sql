@@ -49,3 +49,57 @@ SELECT neutered, MIN(weight_kg), MAX(weight_kg) FROM animals GROUP BY neutered;
 /* Average number of escape attempts per animal type of those born between 1990 and 2000 */
 SELECT neutered, AVG(escape_attempts) FROM animals WHERE date_of_birth 
 BETWEEN 'Jan 1, 1990' AND 'Dec 31, 2000' GROUP BY neutered;
+
+/* Start a transaction and update the animals 
+   table by setting the species column to unspecified.
+*/
+BEGIN TRANSACTION;
+
+UPDATE animals SET species = 'unspecified';
+
+--verify the changes were made
+SELECT * FROM animals;
+
+--rollback changes made to species
+ROLLBACK TRANSACTION;
+
+SELECT species FROM animals;
+
+/* Start a transaction and update the animals 
+   table by setting species column
+*/
+BEGIN TRANSACTION;
+
+UPDATE animals SET species = 'digimon' WHERE name LIKE '%mon';
+
+UPDATE animals SET species = 'pokemon' WHERE species IS NULL;
+
+COMMIT TRANSACTION;
+
+SELECT name, species FROM animals;
+
+/* Start a transaction and delete 
+   all records in the animals table
+*/
+BEGIN TRANSACTION;
+
+DELETE FROM animals;
+
+ROLLBACK TRANSACTION;
+
+SELECT species FROM animals;
+
+-- start and run multiple transactions on the animals table
+BEGIN TRANSACTION;
+
+DELETE FROM animals WHERE date_of_birth > 'Jan 1, 2022';
+
+SAVE TRANSACTION first_deleted_transaction;
+
+UPDATE animals SET weight_kg = weight_kg * -1;
+
+ROLLBACK TRANSACTION first_deleted_transaction;
+
+UPDATE animals SET weight_kg = weight_kg * -1 WHERE weight_kg < 0;
+
+COMMIT TRANSACTION;
