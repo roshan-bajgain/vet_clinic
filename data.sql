@@ -160,3 +160,10 @@ INSERT INTO animals(
     TRUE,
     17
 );
+
+/* Start a transaction and update the animals 
+   table by setting the species column to unspecified.
+*/
+BEGIN TRANSACTION;
+
+UPDATE animals SET species = 'unspecified';
