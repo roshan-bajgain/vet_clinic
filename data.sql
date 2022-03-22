@@ -167,3 +167,9 @@ INSERT INTO animals(
 BEGIN TRANSACTION;
 
 UPDATE animals SET species = 'unspecified';
+
+--verify the changes were made
+SELECT * FROM animals;
+
+--rollback changes made to species
+ROLLBACK TRANSACTION;
