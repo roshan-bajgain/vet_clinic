@@ -180,3 +180,33 @@ ROLLBACK TRANSACTION;
 BEGIN TRANSACTION;
 
 UPDATE animals SET species = 'digimon' WHERE name LIKE '%mon';
+
+UPDATE animals SET species = 'pokemon' WHERE species IS NULL;
+
+COMMIT TRANSACTION;
+
+SELECT name, species FROM animals;
+
+/* Start a transaction and delete 
+   all records in the animals table
+*/
+BEGIN TRANSACTION;
+
+DELETE FROM animals;
+
+ROLLBACK TRANSACTION;
+
+-- start and run multiple transactions on the animals table
+BEGIN TRANSACTION;
+
+DELETE FROM animals WHERE date_of_birth > 'Jan 1, 2022';
+
+SAVE TRANSACTION first_deleted_transaction;
+
+UPDATE animals SET weight_kg = weight_kg * -1;
+
+ROLLBACK TRANSACTION first_deleted_transaction;
+
+UPDATE animals SET weight_kg = weight_kg * -1 WHERE weight_kg < 0;
+
+COMMIT TRANSACTION;
