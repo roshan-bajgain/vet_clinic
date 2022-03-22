@@ -173,3 +173,10 @@ SELECT * FROM animals;
 
 --rollback changes made to species
 ROLLBACK TRANSACTION;
+
+/* Start a transaction and update the animals 
+   table by setting species column
+*/
+BEGIN TRANSACTION;
+
+UPDATE animals SET species = 'digimon' WHERE name LIKE '%mon';
