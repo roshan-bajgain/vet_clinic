@@ -18,3 +18,9 @@ CREATE TABLE owners(
     age INT,
     PRIMARY KEY (owner_id)
 );
+
+CREATE TABLE species(
+    id SERIAL PRIMARY KEY NOT NULL,
+    name VARCHAR(100),
+    PRIMARY KEY (species_id)
+);
