@@ -103,3 +103,12 @@ ROLLBACK TRANSACTION first_deleted_transaction;
 UPDATE animals SET weight_kg = weight_kg * -1 WHERE weight_kg < 0;
 
 COMMIT TRANSACTION;
+
+-- Write queries (using JOIN) :
+-- What animals belong to Melody Pond?
+SELECT *
+  FROM animals a
+  INNER JOIN owners o
+  ON a.owner_id = o.id
+  WHERE o.full_name = 'Melody Pond';
+
