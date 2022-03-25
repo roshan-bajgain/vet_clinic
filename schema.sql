@@ -41,3 +41,11 @@ ADD owner_id INT,
 ADD CONSTRAINT fk_owner
 FOREIGN KEY (owner_id)
 REFERENCES owners (id)
+
+-- Creating new table vets
+CREATE TABLE vets (
+  id SERIAL PRIMARY KEY NOT NULL,
+  name VARCHAR(100) NOT NULL, 
+  age INT,
+  date_of_graduation DATE NOT NULL 
+);
