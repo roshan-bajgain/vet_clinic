@@ -49,3 +49,20 @@ CREATE TABLE vets (
   age INT,
   date_of_graduation DATE NOT NULL 
 );
+
+--Specialization table
+CREATE TABLE specializations (
+    species_id INT,
+    vet_id INT,
+    FOREIGN KEY (species_id) REFERENCES species (id),
+    FOREIGN KEY (vet_id) REFERENCES vets (id) 
+);
+
+--Visit table
+CREATE TABLE visits (
+    animal_id INT NOT NULL,
+    vet_id INT NOT NULL,
+    date_of_visit DATE,
+    FOREIGN KEY (animal_id) REFERENCES animals (id),
+    FOREIGN KEY (vet_id) REFERENCES vets (id) 
+);
