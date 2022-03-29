@@ -1,8 +1,8 @@
 # Vet clinic database: create animals table
 > In this project I use a relational database to create the initial data structure for a vet clinic. I create a table to store animals' information, insert some data into it, and query it.
 
-<!-- ![Screenshoot-Before](./Before.png)
-![Screenshoot-After](./After.png) -->
+![Screenshoot-Before](./Before.png)
+![Screenshoot-After](./After.png)
 
 ## Getting Started
 
