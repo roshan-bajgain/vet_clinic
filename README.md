@@ -26,6 +26,13 @@ This repository includes files with plain SQL that can be used to recreate a dat
 - Twitter: [@RoshanBajgain10](https://twitter.com/RoshanBajgain10)
 - LinkedIn: [LinkedIn](https://www.linkedin.com/in/roshan-bazgain/)
 
+
+👤 **Ola Ishola**
+
+- GitHub: [@netman5](https://github.com/netman5)
+- Twitter: [@Orlaish](https://twitter.com/Orlaish)
+- LinkedIn: [LinkedIn](https://www.linkedin.com/in/ola-ishola/)
+
 ## 🤝 Contributing
 
 Contributions, issues, and feature requests are welcome!
